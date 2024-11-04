@@ -37,13 +37,13 @@ const students = [
 // 남학생만 필터링
 // 연령만 필터링
 // 평균 구한 뒤 리턴
-const male = students.filter((student) => student.gender === "male");
+{const male = students.filter((student) => student.gender === "male");
 const result6 = male.map((student) => student.age).reduce((acc, age) => acc + age, 0) / male.length;
-console.log(result6);
+console.log(result6);}
 
 // //7. 여학생들의 이름만 따로 추출해서 새로운 배열 만들기
-// const result7 = students.map((student) => student.name);
-// console.log(result7);
+{const result7 = students.filter((student) => student.gender === 'female').map((student) => student.name);
+console.log(result7);}
 
 // //8. 여학생들 중 나이가 가장 어린 학생 찾기
 // // 여학생 필터링
