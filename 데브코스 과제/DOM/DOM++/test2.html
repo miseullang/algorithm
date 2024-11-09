@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="startTimerButton">타이머 시작</button>
+    <div id="timerDisplay">10</div>
+    <script>
+      const startTimerButton = document.getElementById("startTimerButton");
+      const timerDisplay = document.getElementById("timerDisplay");
+
+      let time = 10;
+
+      function handleTimer() {
+        const timer = setInterval(() => {
+          time--;
+          timerDisplay.textContent = time;
+
+          if (time === 0) {
+            alert("타이머가 끝났습니다.");
+            clearInterval(timer);
+            time = 0;
+          }
+        }, 1000);
+      }
+
+      startTimerButton.addEventListener("click", handleTimer);
+    </script>
+  </body>
+</html>
