@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!--
+      Need a visual blank slate?
+      Remove all code in `styles.css`!
+    -->
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <div id="calendar"></div>
+    <button id="generateCalendarButton">캘린더 생성</button>
+    <style>
+      table,
+      tr,
+      th,
+      td {
+        border: none;
+      }
+    </style>
+    <script>
+      document
+        .getElementById("generateCalendarButton")
+        .addEventListener("click", generateCalendar);
+
+      function generateCalendar() {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth();
+
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const daysInMonth = lastDay.getDate();
+
+        let calendarHTML = '<table border="1">';
+        calendarHTML +=
+          '<tr><th colspan="7">' + year + "년 " + (month + 1) + "월</th></tr>";
+        calendarHTML +=
+          "<tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>";
+
+        let day = 1;
+        for (let i = 0; i < 6; i++) {
+          calendarHTML += "<tr>";
+          for (let j = 0; j < 7; j++) {
+            if ((i === 0 && j < firstDay.getDay()) || day > daysInMonth) {
+              calendarHTML += "<td></td>";
+            } else {
+              calendarHTML += "<td>" + day + "</td>";
+              day++;
+            }
+          }
+          calendarHTML += "</tr>";
+          if (day > daysInMonth) break;
+        }
+
+        calendarHTML += "</table>";
+        document.getElementById("calendar").innerHTML = calendarHTML;
+      }
+    </script>
+  </body>
+</html>
