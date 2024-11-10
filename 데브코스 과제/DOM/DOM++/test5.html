@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>드롭다운 메뉴 구현</title>
+    <style>
+      .menu-item {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="dropdownButton">메뉴 열기</button>
+    <div id="dropdownMenu" style="display: none">
+      <div class="menu-item">항목 1</div>
+      <div class="menu-item">항목 2</div>
+    </div>
+    <div id="selectedItem">선택된 항목: 없음</div>
+    <script>
+      const dropdownButton = document.getElementById('dropdownButton');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      const selectedItem = document.getElementById('selectedItem');
+      const menuItems = document.querySelectorAll('.menu-item');
+
+      dropdownButton.addEventListener('click', function() {
+          const isHidden = dropdownMenu.style.display === 'none';
+          dropdownMenu.style.display = isHidden ? 'block' : 'none';
+          this.textContent = isHidden ? '메뉴 닫기' : '메뉴 열기';
+      });
+
+      menuItems.forEach(item => {
+          item.addEventListener('click', function() {
+              selectedItem.textContent = `선택된 항목: ${this.textContent}`;
+
+          });
+      });
+  </script>
+  </body>
+</html>
