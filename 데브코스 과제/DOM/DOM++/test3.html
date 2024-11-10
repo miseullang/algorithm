@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>복수 선택 가능한 체크박스</title>
+  </head>
+  <body>
+    <label><input type="checkbox" class="itemCheckbox" /> 항목 1</label>
+    <label><input type="checkbox" class="itemCheckbox" /> 항목 2</label>
+    <label><input type="checkbox" class="itemCheckbox" /> 항목 3</label>
+    <div id="countDisplay">선택된 항목 수: 0</div>
+
+    <script>
+      const checkboxes = document.querySelectorAll(".itemCheckbox");
+      const countDisplay = document.getElementById("countDisplay");
+
+      function updateCount() {
+        const checkedCount = Array.from(checkboxes).filter(
+          (checkbox) => checkbox.checked
+        ).length;
+
+        countDisplay.textContent = `선택된 항목 수: ${checkedCount}`;
+      }
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", updateCount);
+      });
+    </script>
+  </body>
+</html>
