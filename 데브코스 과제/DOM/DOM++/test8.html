@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다이나믹 폼 추가</title>
+  </head>
+  <body>
+    <button id="addFieldButton">필드 추가</button>
+    <div id="formContainer"></div>
+    <script>
+      const addFieldButton = document.getElementById("addFieldButton");
+      const formContainer = document.getElementById("formContainer");
+
+      addFieldButton.addEventListener('click', function () {
+        formContainer.innerHTML = `<input placeholder="새로운 필드 입력">`
+      })
+    </script>
+  </body>
+</html>
