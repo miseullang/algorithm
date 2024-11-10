@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>비밀번호 강도 검사</title>
+  </head>
+  <body>
+    <input type="password" id="passwordInput" placeholder="비밀번호 입력" />
+    <div id="strengthDisplay">강도:</div>
+    <script>
+      // 기본값 : 약함
+      // 중간 조건(8자 이상) 통과 => 중간
+      // 강함 조건(중간 조건 + 정규식) 통과 => 강함
+      
+      const passwordInput = document.getElementById("passwordInput");
+      const strengthDisplay = document.getElementById("strengthDisplay");
+
+      passwordInput.addEventListener("input", function () {
+        const password = this.value;
+        let strength = "약함";
+
+        // 공통 조건: 대문자와 숫자 포함
+        const hasUpperAndNumber =
+          /[A-Z]/.test(password) && /[0-9]/.test(password);
+
+        // 중간 조건: 8자 이상
+        const isLongEnough = password.length >= 8;
+
+        // 강함 조건: 8자 이상 + 공통 조건 통과
+        if (isLongEnough && hasUpperAndNumber) {
+          strength = "강함";
+        }
+        // 중간 조건: 8자 이상
+        else if (isLongEnough) {
+          strength = "중간";
+        }
+
+        strengthDisplay.textContent = `강도: ${strength}`;
+      });
+    </script>
+  </body>
+</html>
