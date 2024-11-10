@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>네비게이션 바에 활성화된 항목 표시</title>
+    <style>
+      .active {
+        color: red;
+      }
+      ul li {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="nav">
+      <li class="nav-item">홈</li>
+      <li class="nav-item">서비스</li>
+      <li class="nav-item">연락처</li>
+    </ul>
+    <script>
+      const navItems = document.querySelectorAll(".nav-item");
+
+      function handleClick() {
+        const currentActive = document.querySelector(".nav-item.active");
+        if (currentActive) {
+          currentActive.classList.remove("active");
+        }
+        this.classList.add("active");
+      }
+
+      navItems.forEach((item) => {
+        item.addEventListener("click", handleClick);
+      });
+    </script>
+  </body>
+</html>
