@@ -6,12 +6,9 @@ function solution(numLog) {
     '-10': 'a',
   };
 
-  let answer = "";
-
-  for(let i = 1; i < numLog.length; i++) {
-    let diff = numLog[i] - numLog[i-1];
-    answer += controls[diff];
-  }
-
-  return answer;
+  return numLog.reduce((acc, cur, index) => {
+    if (index === 0) return acc;
+    let diff = cur - numLog[index - 1];
+    return acc + controls[diff];
+  }, "");
 }
